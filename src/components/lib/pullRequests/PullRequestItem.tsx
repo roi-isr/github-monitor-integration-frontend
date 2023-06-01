@@ -3,6 +3,12 @@ import { pullRequestItemType } from "../../../types";
 import Modal from "../../UI/modal/Modal";
 
 import style from "./PullRequestItem.module.scss";
+import Card from "../../UI/card/Card";
+
+const prStateColors: { [key: string]: string } = {
+  open: "#99f475",
+  closed: "#ff6c7c",
+};
 
 function PullRequestItem(props: pullRequestItemType) {
   const [showModal, setShowModal] = useState(false);
@@ -19,7 +25,9 @@ function PullRequestItem(props: pullRequestItemType) {
       <hr></hr>
       <h2>{props.title}</h2>
       <section className={style.prdetails}>
-        <h3>State: {props.state}</h3>
+        <Card backgroundColor={prStateColors[props.state.toLowerCase()]}>
+          <h3>State: {props.state}</h3>
+        </Card>
       </section>
       <section className={style.prtimes}>
         <span>
@@ -41,12 +49,19 @@ function PullRequestItem(props: pullRequestItemType) {
             : "N/A"}
         </span>
       </section>
-      <a onClick={() => setShowModal(true)} className={style.screenshotLink}>
-        Show screenshot
-      </a>
+      <button
+        onClick={() => setShowModal(true)}
+        className={style.screenshotBtn}
+      >
+        Show Screenshot
+      </button>
       {showModal && (
         <Modal closeHandler={() => setShowModal(false)}>
-          <img src={props.screenshotUrl} alt="Pull Request screenshot" />
+          <img
+            className={style.screenshot}
+            src={props.screenshotUrl}
+            alt="Pull Request screenshot"
+          />
         </Modal>
       )}
     </div>

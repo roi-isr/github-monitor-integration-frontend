@@ -1,10 +1,22 @@
 import React from "react";
-import { layoutType } from "../../../types";
 
 import style from "./Card.module.scss";
 
-function Card({ children }: layoutType) {
-  return <div className={style.card}>{children}</div>;
+function Card({
+  children,
+  backgroundColor,
+}: {
+  children: JSX.Element | JSX.Element[];
+  backgroundColor?: string;
+}) {
+  return (
+    <div
+      className={style.card}
+      style={{ backgroundColor: backgroundColor || "" }}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default Card;

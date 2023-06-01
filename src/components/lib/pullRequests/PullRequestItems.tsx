@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { headerType, pullRequestItemType } from "../../../types";
+import { pullRequestItemType } from "../../../types";
 import PullRequestItem from "./PullRequestItem";
 
 import style from "./PullRequestItems.module.scss";
@@ -19,7 +19,7 @@ function PullRequestItems() {
     setPullRequestDetails(await response.json());
   };
 
-  return (
+  return pullRequestDetails.length > 0 ? (
     <ul>
       {pullRequestDetails.map((detail: pullRequestItemType) => {
         return (
@@ -31,6 +31,8 @@ function PullRequestItems() {
         );
       })}
     </ul>
+  ) : (
+    <div className={style.loadingText}>Loading...</div>
   );
 }
 

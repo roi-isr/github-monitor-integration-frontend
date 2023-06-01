@@ -1,9 +1,8 @@
 import React from "react";
-import { layoutType } from "../../../types";
 
 import style from "./Layout.module.scss";
 
-function Layout({ children }: layoutType) {
+function Layout({ children }: { children: JSX.Element | JSX.Element[] }) {
   return <div className={style.layout}>{children}</div>;
 }
 

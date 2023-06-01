@@ -3,10 +3,6 @@ export type headerType = {
   image_url?: string;
 };
 
-export type layoutType = {
-  children: JSX.Element | JSX.Element[];
-};
-
 export type pullRequestItemType = {
   id: string;
   state: string;
