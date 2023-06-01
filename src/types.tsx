@@ -15,4 +15,5 @@ export type pullRequestItemType = {
     update: string;
     close: string;
   };
+  repositoryName: string | null;
 };

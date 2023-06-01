@@ -8,7 +8,12 @@ import Card from "../../UI/card/Card";
 const SERVER_URL = process.env.REACT_APP_BACKEND_URL as string;
 
 function PullRequestItems() {
-  const [pullRequestDetails, setPullRequestDetails]: [any, any] = useState([]);
+  const [pullRequestDetails, setPullRequestDetails]: [
+    Array<pullRequestItemType>,
+    any
+  ] = useState([]);
+  const [repositoryName, setRepositoryName]: [string, any] = useState("");
+  const [loading, setLoading]: [any, any] = useState(true);
 
   useEffect(() => {
     fetchPullRequestDetails();
@@ -16,23 +21,38 @@ function PullRequestItems() {
 
   const fetchPullRequestDetails = async () => {
     const response = await fetch(SERVER_URL);
-    setPullRequestDetails(await response.json());
+    const pullRequestDetails = await response.json();
+    const pullRequestWithrepositoryName = pullRequestDetails.details.find(
+      (detail: pullRequestItemType) => detail.repositoryName
+    );
+    setRepositoryName(
+      pullRequestWithrepositoryName
+        ? pullRequestWithrepositoryName.repositoryName
+        : "N/A"
+    );
+    setPullRequestDetails(pullRequestDetails.details);
+    setLoading(false);
   };
 
-  return pullRequestDetails.length > 0 ? (
-    <ul>
-      {pullRequestDetails.map((detail: pullRequestItemType) => {
-        return (
-          <li key={detail.id} className={style.prlist}>
-            <Card>
-              <PullRequestItem {...detail} />
-            </Card>
-          </li>
-        );
-      })}
-    </ul>
-  ) : (
+  return loading ? (
     <div className={style.loadingText}>Loading...</div>
+  ) : (
+    <>
+      <h1 className={style.repoName}>
+        <u>Repoistory Name</u>: {repositoryName}
+      </h1>
+      <ul>
+        {pullRequestDetails.map((detail: pullRequestItemType) => {
+          return (
+            <li key={detail.id} className={style.prlist}>
+              <Card>
+                <PullRequestItem {...detail} />
+              </Card>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
 
