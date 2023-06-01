@@ -5,52 +5,7 @@ import PullRequestItem from "./PullRequestItem";
 import style from "./PullRequestItems.module.scss";
 import Card from "../../UI/card/Card";
 
-const SERVER_URL = "http://localhost:8080";
-
-const pullRequestDetails = [
-  {
-    id: "1",
-    state: "open",
-    title: "_",
-    username: "roi",
-    userAvatarUrl: "https://avatars.githubusercontent.com/u/64132493?v=4",
-    times: {
-      create: new Date(),
-      update: new Date(),
-      close: new Date(),
-    },
-    screenshotUrl:
-      "https://storage.googleapis.com/github-monitor-integration.appspot.com/screenshots/pull_requests/1685537266.533633.png",
-  },
-  {
-    id: "2",
-    state: "open",
-    title: "_",
-    username: "roi",
-    userAvatarUrl: "https://avatars.githubusercontent.com/u/64132493?v=4",
-    times: {
-      create: new Date(),
-      update: new Date(),
-      close: new Date(),
-    },
-    screenshotUrl:
-      "https://storage.googleapis.com/github-monitor-integration.appspot.com/screenshots/pull_requests/1685537266.533633.png",
-  },
-  {
-    id: "3",
-    state: "open",
-    title: "_",
-    username: "roi",
-    userAvatarUrl: "https://avatars.githubusercontent.com/u/64132493?v=4",
-    times: {
-      create: new Date(),
-      update: new Date(),
-      close: new Date(),
-    },
-    screenshotUrl:
-      "https://storage.googleapis.com/github-monitor-integration.appspot.com/screenshots/pull_requests/1685537266.533633.png",
-  },
-];
+const SERVER_URL = process.env.REACT_APP_BACKEND_URL as string;
 
 function PullRequestItems() {
   const [pullRequestDetails, setPullRequestDetails]: [any, any] = useState([]);
