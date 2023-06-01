@@ -26,6 +26,7 @@
 .prdetails {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .prtimes {
@@ -33,7 +34,8 @@
   flex-direction: column;
 }
 
-h3 {
+h3,
+h2 {
   margin: 0;
 }
 

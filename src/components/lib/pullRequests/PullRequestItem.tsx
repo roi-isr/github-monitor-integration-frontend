@@ -17,10 +17,9 @@ function PullRequestItem(props: pullRequestItemType) {
         <h1 className={style.username}>{props.username}</h1>
       </section>
       <hr></hr>
-      <h2>PR Details</h2>
+      <h2>{props.title}</h2>
       <section className={style.prdetails}>
         <h3>State: {props.state}</h3>
-        <h3>Title: {props.title}</h3>
       </section>
       <section className={style.prtimes}>
         <span>
