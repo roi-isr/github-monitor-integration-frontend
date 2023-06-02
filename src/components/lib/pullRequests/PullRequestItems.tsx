@@ -39,7 +39,7 @@ function PullRequestItems() {
   ) : (
     <>
       <h1 className={style.repoName}>
-        <u>Repoistory Name</u>: {repositoryName}
+        <u>Repository Name</u>: {repositoryName}
       </h1>
       <ul>
         {pullRequestDetails.map((detail: pullRequestItemType) => {
