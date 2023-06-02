@@ -32,8 +32,8 @@ function PullRequestItem(props: pullRequestItemType) {
       <section className={style.prtimes}>
         <span>
           Created:{" "}
-          {props.times.close
-            ? new Date(props.times.close).toLocaleString()
+          {props.times.create
+            ? new Date(props.times.create).toLocaleString()
             : "N/A"}
         </span>
         <span>
